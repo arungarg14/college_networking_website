@@ -6,7 +6,6 @@ from django.views.generic import TemplateView
 from django.contrib.auth import login,logout
 from django.contrib.auth.decorators import login_required
 from application.forms import UserInfoForm
-from application.models import UserRegistration
 # Create your views here.
 
 
@@ -30,3 +29,9 @@ def register(request):
         user_info_form = UserInfoForm()
         # user_form = UserRegistrationForm()
     return render(request,'app/college_form.html',{'user_info_form':user_info_form,'registered':registered})
+
+
+
+@login_required
+def profile(request):
+    return render(request, 'app/profile.html', {})

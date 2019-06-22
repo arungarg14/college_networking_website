@@ -4,16 +4,11 @@
 {% block body_block %}
 {% load static %}
   <div class="jumbotron">
-
-
     <h2>Welcome to the Networking Website Of IIIT-Una!</h2>
 
     <img src="{% static 'css/home_two.jpg' %}" width="900" height="400" > <br> <br>
 
     <h3> <i>Networking is not collecting contacts. It is about planting relations. </i> </h3>
-
-
-
     <h2>Please Login: </h2>
 
     {% if form.errors %}
@@ -24,7 +19,6 @@
 
     {% csrf_token %}
     <table>
-
     <tr>
 
     <td>
@@ -33,23 +27,16 @@
     {{form.username}} <br> </td>
 
     </tr>
-
     <tr>
-
     <td>
 
     <label for=""> Password :  </label> </td> <td>
     {{form.password}}  <br> </td>
-
     </tr>
-
     </table>
-
-
         <input type="submit" class='btn btn-primary' value="Login">
         <!-- <input type="hidden" name="next" value="{{ next }}" /> -->
     </form>
-
 
   </div>
 {% endblock %}
