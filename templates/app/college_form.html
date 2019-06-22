@@ -1,0 +1,153 @@
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+
+<div class="jumbotron">
+
+
+
+{% if registered %}
+<h1>Thankyou for registering! You have registered </h1>
+<h2>Goto <a href="{% url 'login' %}">Sign In</a> Page: </h2>
+{% else %}
+<h1>Register here !</h1>
+<form method="POST">
+
+
+
+{% csrf_token %}
+
+{{user_info_form|crispy}}
+
+<input type="submit" class="btn btn-primary" value="Register">
+
+
+</form>
+{% endif %}
+</div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <form enctype="multipart/form-data" method="POST">
+<div style="border:2px solid grey;padding:20px">
+{% csrf_token %}
+
+<legend> <u> Personalia: </u> </legend>
+
+<table>
+
+<tr>
+
+<td>
+
+<label for="">Roll no : </label> </td> <td>
+{{user_info_form.username }} <br> </td>
+
+</tr>
+
+<tr>
+
+<td>
+
+<label for=""> Name :  </label> </td> <td>
+{{user_form.Name}}  <br> </td>
+
+</tr>
+
+<tr>
+
+<td>
+<label for="">Branch : </label> </td> <td>
+{{user_form.Branch}}  <br> </td>
+
+</tr>
+
+</table>
+
+<label for="">Hobbies : </label> <br>
+{{user_form.Hobbies}}    <br>
+
+
+<label for="">Interest : </label> <br>
+{{user_form.Interest}} <br> <br>
+
+<label for="">Profile Pic : </label>
+{{user_form.Profile_pic}} <br>
+
+</fieldset>
+</div>
+
+
+<div style="border:2px solid grey;padding:20px">
+
+
+<legend> <u> Contact Details: </u> </legend>
+
+<table>
+  <tr>
+
+
+<td>
+
+<label for="">Email : </label>   </td>  <td>
+{{user_info_form.email}} <br> </td>
+
+  </tr>
+
+  <tr>
+    <td>
+
+<label for="">Linkedin URL : </label> </td> <td>
+{{user_form.Linkedin_URL}} <br> </td>
+
+  </tr>
+
+  <tr>
+
+  <td>
+<label for="">Contact NO(optional) : </label> </td> <td>
+{{user_form.Contact_NO}} <br> </td>
+ </tr>
+
+
+</table>
+</div>
+<div style="border:2px solid grey;padding:20px">
+<legend> <u> Set Password: </u> </legend>
+
+<table>
+  <tr>
+
+
+<td>
+  <label for="">Password : </label> </td> <td>
+  {{user_info_form.password1}} <br> </td>
+
+    </tr>
+
+    <tr>
+
+
+  <td>
+    <label for="">Confirm Password : </label> </td> <td>
+    {{user_info_form.password2}} <br> </td>
+
+      </tr>
+
+</table>
+
+</div> <br>
+<input type="submit" class="btn btn-primary" value="Register">
+
+</form>

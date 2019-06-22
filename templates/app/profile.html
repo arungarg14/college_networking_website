@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+
+<div class="content-section">
+
+  <div class="media">
+
+
+<img class="rounded-circle account-img" src="{{ user.userregistration.Profile_pic.url }}" width=200>
+
+<div class="media-body">
+
+<h2 class="account-heading"> {{user.username}} </h2>
+
+<p class="text-secondary">  {{user.email}}  </p>
+
+<p>  {{user.userregistration.Branch}} </p>
+
+<form method="POST" enctype'multipart/form-data'>
+{% csrf_token %}
+
+
+{{p_form|crispy}}
+{{u_form|crispy}}
+<button type="submit" class="btn btn-primary">Update</button>
+
+</form>
+
+
+</div>
+
+</div>
+</div>
+{% endblock %}
