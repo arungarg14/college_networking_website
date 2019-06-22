@@ -145,3 +145,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'iamchinu14@gmail.com'
+EMAIL_HOST_PASSWORD = 'IAMARUNCHINUGARG'
+EMAIL_PORT = 587
