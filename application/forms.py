@@ -30,7 +30,7 @@ class ProfileUpdateForm(forms.ModelForm):
         model = Profile
         widgets = {
             'Hobbies': forms.Textarea(attrs={'rows': 2, 'cols': 40}),
-            'Skills' : forms.Textarea(attrs={'rows': 4, 'cols': 40}),
+            'Skills' : forms.Textarea(attrs={'rows': 4, 'cols': 40, 'placeholder': 'Write in brief. It would help others to find you'}),
             'Linkedin_URL' : forms.TextInput(attrs={'placeholder': 'https://www.linkedin.com/.......','size':'50'}),
         }
         fields = ['Name','Branch','Linkedin_URL','Hobbies','Skills','Contact_NO','image']

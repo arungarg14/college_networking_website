@@ -7,7 +7,7 @@ from django.contrib.auth import login,logout
 from django.contrib.auth.decorators import login_required
 from application.forms import UserInfoForm, UserUpdateForm, ProfileUpdateForm
 # Create your views here.
-
+from django.contrib.auth.forms import PasswordChangeForm
 
 
 
@@ -34,6 +34,10 @@ def register(request):
 
 @login_required
 def profile(request):
+    return render(request, 'app/profile.html', {})
+
+@login_required
+def update(request):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
@@ -50,5 +54,19 @@ def profile(request):
 
 
     context = {'u_form':u_form, 'p_form':p_form}
+    return render(request, 'app/update_info.html', context)
 
-    return render(request, 'app/profile.html', context)
+
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Your password has been updated!')
+            return redirect('profile')
+
+    else:
+        form = PasswordChangeForm(user=request.user)
+
+    return render(request, 'app/password_change.html', {'form':form})

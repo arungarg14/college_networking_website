@@ -4,11 +4,26 @@
 {% block body_block %}
 {% load static %}
   <div class="jumbotron">
+
+    {% if user.is_authenticated %}
+
     <h2>Welcome to the Networking Website Of IIIT-Una!</h2>
 
     <img src="{% static 'css/home_two.jpg' %}" width="900" height="400" > <br> <br>
 
     <h3> <i>Networking is not collecting contacts. It is about planting relations. </i> </h3>
+
+    {% else %}
+
+    <h2>Welcome to the Networking Website Of IIIT-Una!</h2>
+
+    <img src="{% static 'css/home_two.jpg' %}" width="900" height="400" > <br> <br>
+
+    <h3> <i>Networking is not collecting contacts. It is about planting relations. </i> </h3>
+
+
+
+
     <h2>Please Login: </h2>
 
     {% if form.errors %}
@@ -34,10 +49,13 @@
     {{form.password}}  <br> </td>
     </tr>
     </table>
-    <a href="{% url 'register' %}">Register </a> 
-        <input type="submit" class='btn btn-primary' value="Login">
-        <!-- <input type="hidden" name="next" value="{{ next }}" /> -->
+    <a href="{% url 'register' %}">Register </a>
+    <input type="submit" class='btn btn-primary' value="Login"> <br>
+    <a href="{% url 'password_reset' %}"> Forgot password? </a>
+
     </form>
+
+    {% endif %}
 
   </div>
 {% endblock %}
