@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^$',auth_views.LoginView.as_view(template_name='registration/login.html'),name='login'),
     url(r'^register/$',views.register, name='register'),
     url(r'^profile/$',views.profile, name='profile'),
+    url(r'^profile-list/$',views.ProfileListView.as_view(), name='profile_list'),
     url(r'^login/$',auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
     url(r'^logout/$',auth_views.LogoutView.as_view(template_name='registration/logout.html'), name='logout'),
     url(r'^profile/update/$',views.update, name='update'),
